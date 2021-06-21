@@ -1,7 +1,12 @@
 const express = require("express");
 const app = express();
 const { Client } = require('pg')
-const client = new Client()
+const client = new Client({
+    host: 'ec2-107-21-10-179.compute-1.amazonaws.com',
+    port: 5432,
+    user: 'xducephjlnjuon',
+    password: '8da6c1fb84f2d71f541f4fc80c5409bc97503742d631df371b52761422b5efa6',
+})
 client.connect();
 
 app.get("*", (req, res) => {
