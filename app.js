@@ -3,7 +3,7 @@ const app = express();
 const pg = require('pg');
 
 app.get("*", (req, res) => {
-    res.json({ text: "Hello salesforce" })
+    // res.json({ text: "Hello salesforce" })
 
     pg.connect(process.env.DATABASE_URL, function (err, conn, done) {
         // watch for any connect issues
