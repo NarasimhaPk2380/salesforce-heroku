@@ -1,23 +1,18 @@
 const express = require("express");
 const app = express();
-const pg = require('pg');
-const pool = new pg.Pool()
+const { Client } = require('pg')
+const client = new Client()
 
 
 app.get("*", (req, res) => {
     // res.json({ text: "Hello salesforce" })
 
-    pool.connect(process.env.DATABASE_URL, function (err, conn, done) {
-        // watch for any connect issues
-        if (err) console.log(err);
-        conn.query(
-            'SELECT * FROM salesforce.contact',
-            function (err, result) {
-                done();
-                res.json(result);
-            }
-        );
-    });
+    client.connect();
+    client.query('SELECT * FROM salesforce.contact', (err, result) => {
+        //console.log(err ? err.stack : res.rows[0].message) // Hello World!
+        client.end()
+        res.json(result);
+    })
 })
 
 app.listen(process.env.PORT || 4444, () => {
