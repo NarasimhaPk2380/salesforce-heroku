@@ -1,11 +1,13 @@
 const express = require("express");
 const app = express();
 const pg = require('pg');
+const pool = new pg.Pool()
+
 
 app.get("*", (req, res) => {
     // res.json({ text: "Hello salesforce" })
 
-    pg.connect(process.env.DATABASE_URL, function (err, conn, done) {
+    pool.connect(process.env.DATABASE_URL, function (err, conn, done) {
         // watch for any connect issues
         if (err) console.log(err);
         conn.query(
