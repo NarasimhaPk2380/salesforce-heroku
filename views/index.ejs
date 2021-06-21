@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.min.css">
+    <title>Contacts</title>
+    <style>
+        .row{
+           margin: 0;
+        }
+    </style>
+</head>
+<body>
+    <!-- <main> -->
+        <div class="row">
+            <div class="col-12">
+                <h1>SALESFORCE CONTACTS</h1>
+                <table class="table">
+                    <thead>
+                      <tr>
+                        <th scope="col">First</th>
+                        <th scope="col">Lastname</th>
+                        <th scope="col">Email</th>
+                        <th scope="col">Phone</th>
+                        <th scope="col">Title</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                        <% contacts.forEach(function(ct) { %>
+                            <tr>
+                                <td><%= ct.name %></td>
+                                <td><%= ct.lastname %></td>
+                                <td>@<%= ct.email %></td>
+                                <td><%= ct.phone %></td>
+                                <td>@<%= ct.title %></td>
+                              </tr>
+                              <tr>
+                          <% }); %>
+                    </tbody>
+                  </table>
+            </div>
+         
+        </div>
+      <!-- </main> -->
+</body>
+</html>
